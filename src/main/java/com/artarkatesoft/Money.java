@@ -1,6 +1,6 @@
 package com.artarkatesoft;
 
-public abstract class Money {
+public class Money {
     protected int amount;
     protected final String currency;
 
@@ -17,15 +17,25 @@ public abstract class Money {
         return new Franc(amount, "CHF");
     }
 
-    public abstract Money times(int multiplier);
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                ", currency='" + currency + '\'' +
+                '}';
+    }
 
     @Override
     public boolean equals(Object obj) {
         Money money = (Money) obj;
-        return amount == money.amount && this.getClass() == obj.getClass();
+        return amount == money.amount && this.currency == money.currency;
     }
 
     public String currency() {
         return currency;
+    }
+
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, this.currency);
     }
 }
