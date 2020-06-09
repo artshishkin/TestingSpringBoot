@@ -1,6 +1,6 @@
 package com.artarkatesoft;
 
-public class Money {
+public class Money implements Expression {
     protected int amount;
     protected final String currency;
 
@@ -37,5 +37,9 @@ public class Money {
 
     public Money times(int multiplier) {
         return new Money(amount * multiplier, this.currency);
+    }
+
+    public Expression plus(Money added) {
+        return new Money(this.amount + added.amount, this.currency);
     }
 }
