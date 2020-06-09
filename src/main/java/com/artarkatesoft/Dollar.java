@@ -1,13 +1,14 @@
 package com.artarkatesoft;
 
-public class Dollar extends Money{
+public class Dollar extends Money {
 
 
     public Dollar(int amount) {
         this.amount = amount;
     }
 
-    public Dollar times(int multiplier) {
+    @Override
+    public Money times(int multiplier) {
         return new Dollar(amount * multiplier);
     }
 
